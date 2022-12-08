@@ -18,7 +18,7 @@ int main() {
                     if (s == "dir") {
                         std::cin >> s;
                     } else if (s != "$") {
-                        int x = std::stol(s);
+                        int x = std::stoi(s);
                         std::cin >> s;
                         for (auto i : v) u[i] += x;
                     } else {
