@@ -5,7 +5,7 @@
 #include <vector>
 #define ll long long
 
-long long monkey(std::string f, ll x) {
+ll monkey(std::string f, ll x) {
     std::string s = f.substr(2);
     if (s == "old") return x * x;
     else if (f[0] == '+') return x + std::stoi(s);
@@ -34,16 +34,16 @@ int main() {
         std::getline(std::cin, s);
         func.push_back(s.substr(23));
         std::getline(std::cin, s);
-        div.push_back(stoi(s.substr(21)));
+        div.push_back(std::stoi(s.substr(21)));
         std::getline(std::cin, s);
-        int tm = stoi(s.substr(29));
+        int tm = std::stoi(s.substr(29));
         std::getline(std::cin, s);
-        int fm = stoi(s.substr(30));
+        int fm = std::stoi(s.substr(30));
         t.push_back(std::make_pair(tm, fm));
         std::getline(std::cin, s);
     }
     int m = 1;
-    for (auto i : div) m *= i;
+    for (int i : div) m *= i;
     int size = v.size();
     std::vector<int> count(size, 0);
     for (int i = 1; i <= 10000; i++) {
