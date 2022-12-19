@@ -28,8 +28,7 @@ int main() {
     std::string s;
     std::unordered_map<std::string, int> id;
     std::unordered_map<int, std::unordered_set<std::string>> adj;
-    std::vector<int> flow;
-    std::vector<int> nzp;
+    std::vector<int> flow, nzp;
     int idx = 0, start;
     while (std::getline(std::cin, s)) {
         std::stringstream ss(s);

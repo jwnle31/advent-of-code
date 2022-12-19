@@ -31,11 +31,9 @@ void dfs(std::vector<std::vector<int>>& v, std::vector<int>& flow, std::vector<i
 int main() {
     const int imax = std::numeric_limits<int>::max();
     std::string s;
-    std::unordered_map<std::string, int> id;
+    std::unordered_map<std::string, int> id, m;
     std::unordered_map<int, std::unordered_set<std::string>> adj;
-    std::unordered_map<std::string, int> m;
-    std::vector<int> flow;
-    std::vector<int> nzp;
+    std::vector<int> flow, nzp;
     int idx = 0, start;
     while (std::getline(std::cin, s)) {
         std::stringstream ss(s);
@@ -73,18 +71,13 @@ int main() {
     for (auto &[i, j] : m) e.push_back(i);
     int size = e.size();
     int max = 0;
-    std::string s1, s2;
     for (int i = 0; i < size; i++) {
         for (int j = i + 1; j < size; j++) {
-            std::bitset<500> b1(e[i]); b1[idx - start - 1] = 0;
-            std::bitset<500> b2(e[j]); b2[idx - start - 1] = 0;
+            std::bitset<64> b1(e[i]); b1[idx - start - 1] = 0;
+            std::bitset<64> b2(e[j]); b2[idx - start - 1] = 0;
             if ((b1 & b2) == 0) {
                 int cur = m[e[i]] + m[e[j]];
-                if (cur > max) {
-                    max = cur;
-                    s1 = e[i];
-                    s2 = e[j];
-                }
+                if (cur > max) max = cur;
             }
         }
     }
